@@ -25,10 +25,7 @@ function EditPost(props) {
                     <div className='my-2'>
                         <label>Title</label>
                         <div>
-                            <input
-                                type='text'
-                                className='border border-gray-500 p-1 w-full'
-                                value={post.title}
+                            <input type='text' className='border border-gray-500 p-1 w-full' value={post.title}
                                 onChange={(e) =>
                                     setPost({
                                         ...post,
@@ -42,9 +39,7 @@ function EditPost(props) {
                     <div className='my-2'>
                         <label>Description</label>
                         <div>
-                            <textarea
-                                className='border border-gray-500 p-1 w-full'
-                                value={post.description}
+                            <textarea className='border border-gray-500 p-1 w-full' value={post.description}
                                 onChange={(e) =>
                                     setPost({
                                         ...post,
@@ -56,9 +51,7 @@ function EditPost(props) {
                     </div>
 
                     <div>
-                        <button
-                            type='submit'
-                            className='bg-red-500 text-white px-3 py-2'
+                        <button type='submit' className='bg-red-500 text-white px-3 py-2'
                         >
                             Edit Post
                         </button>

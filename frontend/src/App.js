@@ -1,15 +1,17 @@
 import './App.css';
-import Header from './components/Header/Header';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { checkAutoLogin } from './services/AuthService';
 import { isAuthenticated } from './store/selectors/AuthSelectors';
-import Home from './pages/Home/Home';
-import CreatePost from './pages/CreatePost/CreatePost';
-import SignUp from './pages/SignUp/SignUp';
-import Login from './pages/Login/Login';
-import Posts from './components/Posts/Posts';
+
+const Home = lazy(() => import('./pages/Home/Home'));
+const CreatePost = lazy(() => import('./pages/CreatePost/CreatePost'));
+const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
+const Login = lazy(() => import('./pages/Login/Login'));
+const Posts = lazy(() => import('./pages/Posts/PostsPage'));
+const EditPost = lazy(() => import('./pages/EditPost/EditPost'));
+const ErrorPage = lazy(() => import('./pages/Error/ErrorPage'));
 
 function App(props) {
     const dispatch = useDispatch();
@@ -21,19 +23,18 @@ function App(props) {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <>
-                <Route path='/' element={<Home />} />
+                <Route path='/' errorElement={<ErrorPage />} element={<Home />} />
                 <Route path='/signup' element={<SignUp />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/posts' element={<Posts />} />
                 <Route path='/createpost' element={<CreatePost />} />
+                <Route path='/editpost' element={<EditPost />} />
             </>
         )
     );
     
-
     return (
         <div>
-            {/* <Header /> */}
             <RouterProvider router={router} />
         </div>
     );
@@ -46,4 +47,3 @@ const mapStateToProps = (state) => {
 };
 
 export default App;
-
