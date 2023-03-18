@@ -4,7 +4,7 @@ import {
     compose,
     createStore,
 } from 'redux';
-import PostsReducer from './reducers/PostsReducer';
+import MessagesReducer from './reducers/MessagesReducer';
 import thunk from 'redux-thunk';
 import { AuthReducer } from './reducers/AuthReducer';
 
@@ -20,7 +20,7 @@ const loggerMiddleware = (store) => (next) => (action) => {
 };
 
 // const fetchDataMiddleware = (store) => (next) => (action) => {
-//     if (action.type === GET_POSTS) {
+//     if (action.type === GET_MESSAGES) {
 //         //ajax call
 //     }
 
@@ -33,7 +33,7 @@ const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducers = combineReducers({
-    posts: PostsReducer,
+    messages: MessagesReducer,
     auth: AuthReducer,
 });
 

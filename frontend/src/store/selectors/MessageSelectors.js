@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-export const getmessageById = (state, messageId) =>
+export const getMessageById = (state, messageId) =>
     state.messages.messages.find((message) => message.id === messageId);
 
-export const getmessage = () => createSelector([getmessageById], (message) => message);
+export const getMessage = () => createSelector([getMessageById], (message) => message);

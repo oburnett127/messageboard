@@ -6,10 +6,10 @@ import {
     updateMessage,
 } from '../../services/MessagesService';
 import {
-    CONFIRMED_CREATE_Message_ACTION,
-    CONFIRMED_DELETE_Message_ACTION,
-    CONFIRMED_EDIT_Message_ACTION,
-    CONFIRMED_GET_MessageS,
+    CONFIRMED_CREATE_MESSAGE_ACTION,
+    CONFIRMED_DELETE_MESSAGE_ACTION,
+    CONFIRMED_EDIT_MESSAGE_ACTION,
+    CONFIRMED_GET_MESSAGES,
 } from './MessageTypes';
 
 export function deleteMessageAction(MessageId, history) {
@@ -23,7 +23,7 @@ export function deleteMessageAction(MessageId, history) {
 
 export function confirmedDeleteMessageAction(MessageId) {
     return {
-        type: CONFIRMED_DELETE_Message_ACTION,
+        type: CONFIRMED_DELETE_MESSAGE_ACTION,
         payload: MessageId,
     };
 }
@@ -52,21 +52,21 @@ export function getMessagesAction() {
 
 export function confirmedCreateMessageAction(singleMessage) {
     return {
-        type: CONFIRMED_CREATE_Message_ACTION,
+        type: CONFIRMED_CREATE_MESSAGE_ACTION,
         payload: singleMessage,
     };
 }
 
 export function confirmedGetMessagesAction(Messages) {
     return {
-        type: CONFIRMED_GET_MessageS,
+        type: CONFIRMED_GET_MESSAGES,
         payload: Messages,
     };
 }
 
 export function confirmedUpdateMessageAction(Message) {
     return {
-        type: CONFIRMED_EDIT_Message_ACTION,
+        type: CONFIRMED_EDIT_MESSAGE_ACTION,
         payload: Message,
     };
 }

@@ -6,11 +6,12 @@ import { checkAutoLogin } from './services/AuthService';
 import { isAuthenticated } from './store/selectors/AuthSelectors';
 
 const Home = lazy(() => import('./pages/Home/Home'));
-const CreateMessagePage = lazy(() => import('./pages/CreateMessage/CreateMessagePage'));
 const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
 const Login = lazy(() => import('./pages/Login/Login'));
-const Messages = lazy(() => import('./pages/Messages/MessagesPage'));
-const EditMessage = lazy(() => import('./pages/EditMessage/EditMessage'));
+const CreateMessagePage = lazy(() => import('./pages/CreateMessage/CreateMessagePage'));
+const MessagesPage = lazy(() => import('./pages/Messages/MessagesPage'));
+const SingleMessagePage = lazy(() => import('./pages/SingleMessage/SingleMessagePage'));
+const EditMessagePage = lazy(() => import('./pages/EditMessage/EditMessagePage'));
 const ErrorPage = lazy(() => import('./pages/Error/ErrorPage'));
 
 function App(props) {
@@ -26,9 +27,10 @@ function App(props) {
                 <Route path='/' ErrorBoundary={<ErrorPage />} element={<Home />} />
                 <Route path='/signup' element={<SignUp />} />
                 <Route path='/login' element={<Login />} />
-                <Route path='/messages' element={<Messages />} />
+                <Route path='/messages' element={<MessagesPage />} />
+                <Route path='/message/:id' element={<SingleMessagePage />} />
                 <Route path='/createmessage' element={<CreateMessagePage />} />
-                <Route path='/editmessage' element={<EditMessage />} />
+                <Route path='/editmessage' element={<EditMessagePage />} />
             </>
         )
     );

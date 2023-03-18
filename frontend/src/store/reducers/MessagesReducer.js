@@ -1,17 +1,17 @@
 import {
-    CONFIRMED_CREATE_message_ACTION,
-    CONFIRMED_DELETE_message_ACTION,
-    CONFIRMED_EDIT_message_ACTION,
-    CONFIRMED_GET_messageS,
-    CREATE_message_ACTION,
-} from '../actions/messageTypes';
+    CONFIRMED_CREATE_MESSAGE_ACTION,
+    CONFIRMED_DELETE_MESSAGE_ACTION,
+    CONFIRMED_EDIT_MESSAGE_ACTION,
+    CONFIRMED_GET_MESSAGES,
+    CREATE_MESSAGE_ACTION,
+} from '../actions/MessageTypes';
 
 const initialState = {
     messages: [],
 };
 
 export default function messagesReducer(state = initialState, actions) {
-    if (actions.type === CREATE_message_ACTION) {
+    if (actions.type === CREATE_MESSAGE_ACTION) {
         const message = {
             id: Math.random(),
             title: 'message Title 2asdasd',
@@ -26,7 +26,7 @@ export default function messagesReducer(state = initialState, actions) {
         };
     }
 
-    if (actions.type === CONFIRMED_DELETE_message_ACTION) {
+    if (actions.type === CONFIRMED_DELETE_MESSAGE_ACTION) {
         const messages = [...state.messages];
         const messageIndex = messages.findIndex(
             (message) => message.id === actions.payload,
@@ -40,7 +40,7 @@ export default function messagesReducer(state = initialState, actions) {
         };
     }
 
-    if (actions.type === CONFIRMED_EDIT_message_ACTION) {
+    if (actions.type === CONFIRMED_EDIT_MESSAGE_ACTION) {
         const messages = [...state.messages];
         const messageIndex = messages.findIndex(
             (message) => message.id === actions.payload.id,
@@ -53,7 +53,7 @@ export default function messagesReducer(state = initialState, actions) {
         };
     }
 
-    if (actions.type === CONFIRMED_CREATE_message_ACTION) {
+    if (actions.type === CONFIRMED_CREATE_MESSAGE_ACTION) {
         const messages = [...state.messages];
         messages.push(actions.payload);
 
@@ -63,7 +63,7 @@ export default function messagesReducer(state = initialState, actions) {
         };
     }
 
-    if (actions.type === CONFIRMED_GET_messageS) {
+    if (actions.type === CONFIRMED_GET_MESSAGES) {
         return {
             ...state,
             messages: actions.payload,

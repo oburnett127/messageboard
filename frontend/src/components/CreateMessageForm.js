@@ -15,7 +15,10 @@ function CreateMessageForm({method, message}) {
   }
 
   const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
+
+  //Need to change this once login is implemented
+  const [author, setAuthor] = useState('tempacct');
+  
   const [content, setContent] = useState('');
   const [timestamp, setTimestamp] = useState('');
   const [status, setStatus] = useState('');
@@ -38,7 +41,7 @@ function CreateMessageForm({method, message}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createMessage.mutate({ content });
+    createMessage.mutate({ author, content });
   };
 
   return (

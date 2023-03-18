@@ -1,7 +1,7 @@
 import CreateMessageForm from '../../components/CreateMessageForm';
 
 function CreateMessagePage() {
-  return <CreateMessageForm method="message" />;
+  return <CreateMessageForm method="post" />;
 }
 
 export default CreateMessagePage;
