@@ -6,11 +6,11 @@ import { checkAutoLogin } from './services/AuthService';
 import { isAuthenticated } from './store/selectors/AuthSelectors';
 
 const Home = lazy(() => import('./pages/Home/Home'));
-const CreatePost = lazy(() => import('./pages/CreatePost/CreatePost'));
+const CreateMessagePage = lazy(() => import('./pages/CreateMessage/CreateMessagePage'));
 const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
 const Login = lazy(() => import('./pages/Login/Login'));
-const Posts = lazy(() => import('./pages/Posts/PostsPage'));
-const EditPost = lazy(() => import('./pages/EditPost/EditPost'));
+const Messages = lazy(() => import('./pages/Messages/MessagesPage'));
+const EditMessage = lazy(() => import('./pages/EditMessage/EditMessage'));
 const ErrorPage = lazy(() => import('./pages/Error/ErrorPage'));
 
 function App(props) {
@@ -23,12 +23,12 @@ function App(props) {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <>
-                <Route path='/' errorElement={<ErrorPage />} element={<Home />} />
+                <Route path='/' ErrorBoundary={<ErrorPage />} element={<Home />} />
                 <Route path='/signup' element={<SignUp />} />
                 <Route path='/login' element={<Login />} />
-                <Route path='/posts' element={<Posts />} />
-                <Route path='/createpost' element={<CreatePost />} />
-                <Route path='/editpost' element={<EditPost />} />
+                <Route path='/messages' element={<Messages />} />
+                <Route path='/createmessage' element={<CreateMessagePage />} />
+                <Route path='/editmessage' element={<EditMessage />} />
             </>
         )
     );

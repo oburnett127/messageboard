@@ -1,34 +1,34 @@
 import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { updatePostAction } from '../../store/actions/PostActions';
-import { getPost } from '../../store/selectors/PostSelectors';
+import { updateMessageAction } from '../../store/actions/MessageActions';
+import { getMessage } from '../../store/selectors/MessageSelectors';
 
-function EditPost(props) {
-    const [post, setPost] = useState(props.post);
+function EditMessage(props) {
+    const [message, setMessage] = useState(props.message);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setPost(props.post);
-    }, [props.post]);
+        setMessage(props.message);
+    }, [props.message]);
 
-    function onUpdatePost(e) {
+    function onUpdateMessage(e) {
         e.preventDefault();
-        dispatch(updatePostAction(post, props.history));
+        dispatch(updateMessageAction(message, props.history));
     }
 
     return (
         <div>
-            <div>Edit Post</div>
+            <div>Edit Message</div>
             <div>
-                <form onSubmit={onUpdatePost}>
+                <form onSubmit={onUpdateMessage}>
                     <div className='my-2'>
                         <label>Title</label>
                         <div>
-                            <input type='text' className='border border-gray-500 p-1 w-full' value={post.title}
+                            <input type='text' className='border border-gray-500 p-1 w-full' value={message.title}
                                 onChange={(e) =>
-                                    setPost({
-                                        ...post,
+                                    setMessage({
+                                        ...message,
                                         title: e.target.value,
                                     })
                                 }
@@ -39,10 +39,10 @@ function EditPost(props) {
                     <div className='my-2'>
                         <label>Description</label>
                         <div>
-                            <textarea className='border border-gray-500 p-1 w-full' value={post.description}
+                            <textarea className='border border-gray-500 p-1 w-full' value={message.description}
                                 onChange={(e) =>
-                                    setPost({
-                                        ...post,
+                                    setMessage({
+                                        ...message,
                                         description: e.target.value,
                                     })
                                 }
@@ -53,7 +53,7 @@ function EditPost(props) {
                     <div>
                         <button type='submit' className='bg-red-500 text-white px-3 py-2'
                         >
-                            Edit Post
+                            Edit Message
                         </button>
                     </div>
                 </form>
@@ -63,12 +63,12 @@ function EditPost(props) {
 }
 
 const makeStateToProps = () => {
-    const post = getPost();
+    const message = getMessage();
     return (state, props) => {
         return {
-            post: post(state, props.match.params.id),
+            message: message(state, props.match.params.id),
         };
     };
 };
 
-export default connect(makeStateToProps)(EditPost);
+export default connect(makeStateToProps)(EditMessage);
