@@ -6,7 +6,7 @@ import {
     loginAction,
 } from '../../store/actions/AuthActions';
 
-function Login(props) {
+function LoginPage(props) {
     const [email, setEmail] = useState('');
     let errorsObj = { email: '', password: '' };
     const [errors, setErrors] = useState(errorsObj);
@@ -104,4 +104,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(LoginPage);

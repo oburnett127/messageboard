@@ -6,7 +6,7 @@ import {
     signupAction,
 } from '../../store/actions/AuthActions';
 
-function SignUp(props) {
+function SignUpPage(props) {
     const [email, setEmail] = useState('');
     let errorsObj = { email: '', password: '' };
     const [errors, setErrors] = useState(errorsObj);
@@ -102,4 +102,4 @@ const mapStateToProps = (state) => {
         showLoading: state.auth.showLoading,
     };
 };
-export default connect(mapStateToProps)(SignUp);
+export default connect(mapStateToProps)(SignUpPage);

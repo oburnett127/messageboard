@@ -4,16 +4,20 @@ import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { checkAutoLogin } from './services/AuthService';
 import { isAuthenticated } from './store/selectors/AuthSelectors';
+import HomePage from './pages/Home/HomePage';
+import MessagesPage from './pages/Messages/MessagesPage';
 
-const Home = lazy(() => import('./pages/Home/Home'));
-const SignUp = lazy(() => import('./pages/SignUp/SignUp'));
-const Login = lazy(() => import('./pages/Login/Login'));
+//const HomePage = lazy(() => import('./pages/Home/HomePage'));
+const SignUpPage = lazy(() => import('./pages/SignUp/SignUpPage'));
+const LoginPage = lazy(() => import('./pages/Login/LoginPage'));
 const CreateMessagePage = lazy(() => import('./pages/CreateMessage/CreateMessagePage'));
-const MessagesPage = lazy(() => import('./pages/Messages/MessagesPage'));
+//const MessagesPage = lazy(() => import('./pages/Messages/MessagesPage'));
 const SingleMessagePage = lazy(() => import('./pages/SingleMessage/SingleMessagePage'));
 const EditMessagePage = lazy(() => import('./pages/EditMessage/EditMessagePage'));
 const DeleteMessagePage = lazy(() => import('./pages/DeleteMessage/DeleteMessagePage'));
 const ErrorPage = lazy(() => import('./pages/Error/ErrorPage'));
+const RootLayout = lazy(() => import('./pages/RootLayout'));
+const MessageRootLayout = lazy(() => import('./pages/MessageRootLayout'));
 
 function App(props) {
     const dispatch = useDispatch();
@@ -24,16 +28,20 @@ function App(props) {
 
     const router = createBrowserRouter(
         createRoutesFromElements(
-            <>
-                <Route path='/' ErrorBoundary={<ErrorPage />} element={<Home />} />
-                <Route path='/signup' element={<SignUp />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/messages' element={<MessagesPage />} />
-                <Route path='/message/:id' element={<SingleMessagePage />} />
-                <Route path='/createmessage' element={<CreateMessagePage />} />
-                <Route path='/editmessage/:id' element={<EditMessagePage />} />
-                <Route path='/deletemessage/:id' element={<DeleteMessagePage />} />
-            </>
+                <Route path='/' errorElement={<ErrorPage />} element={<RootLayout />}>
+                    <Route index element={<HomePage />}></Route>
+                    <Route path='/signup' element={<SignUpPage />}></Route>
+                    <Route path='/login' element={<LoginPage />}></Route>
+                    <Route path='/messages' element={<MessageRootLayout />}>
+                        <Route index element={<MessagesPage />}></Route>
+                        <Route path='/messages/:id' id='message-detail'> 
+                            <Route index element={<SingleMessagePage />}></Route>
+                            <Route path='/messages/:id/edit' element={<EditMessagePage />}></Route>
+                            <Route path='/messages/:id/delete' element={<DeleteMessagePage />}></Route>
+                        </Route>
+                        <Route path='/messages/new' element={<CreateMessagePage />}></Route>
+                    </Route>
+                </Route>
         )
     );
     

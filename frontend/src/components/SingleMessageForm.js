@@ -9,6 +9,9 @@ function SingleMessageForm() {
   const { isLoading, error, data: result } = useQuery('singleMessage', 
     () => axios.get(`http://localhost:5000/api/message/${id}`));
 
+  // console.log("id is: " + id);
+  // console.log(result);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
