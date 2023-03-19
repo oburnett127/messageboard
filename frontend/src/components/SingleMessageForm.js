@@ -1,21 +1,31 @@
 import axios from "axios";
+import { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 
 function SingleMessageForm() {
-    const { id } = useParams();
+  const { id } = useParams();
 
-    const { isLoading, error, data: messageData } = useQuery('singleMessage', 
-        () => axios('http://localhost:5000/api/message/5').then((res) => res.data)
-    );
+  const { isLoading, error, data: result } = useQuery('singleMessage', 
+    () => axios.get(`http://localhost:5000/api/message/${id}`));
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
+  if (error) {
+      return <div>Error: {error.message}</div>;
+  }
+
+  const messageData = result.data.message;
+
+  return (
+    <div>
+      <p>{messageData.author}</p>
+      <time>{messageData.timestamp}</time>
+      <p>{messageData.content}</p>
+    </div>
+  );
 }
 
 export default SingleMessageForm;

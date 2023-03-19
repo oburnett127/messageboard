@@ -4,14 +4,15 @@ import { updateMessageAction } from '../store/actions/MessageActions';
 import { getMessage } from '../store/selectors/MessageSelectors';
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function EditMessageForm(props) {
+    const { id } = useParams();
     const queryClient = useQueryClient();
-    const [title, setTitle] = useState(message.title);
-    const [content, setContent] = useState(message.content);
+    const [content, setContent] = useState('');
 
     const { mutate, isLoading } = useMutation(
-        (updatedMessage) => axios.post(`http://localhost:5000/api/message/update/${message.id}`, updatedMessage),
+        (updatedMessage) => axios.put(`http://localhost:5000/api/message/${id}`, updatedMessage),
         {
             onSuccess: () => {
                 queryClient.invalidateQueries("messages");
@@ -22,30 +23,20 @@ function EditMessageForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         mutate({ content });
-    };
-
-    const [message, setMessage] = useState(props.message);
-
-    //const dispatch = useDispatch();
-
-    useEffect(() => {
-        setMessage(props.message);
-    }, [props.message]);
-
-    function onEditMessage(e) {
-        e.preventDefault();
-       
+        
+        //const dispatch = useDispatch();
         //dispatch(updateMessageAction(message, props.history));
-    }
+
+    };
 
     return (
         <div>
             <div>Edit Message</div>
             <div>
-                <form onSubmit={onEditMessage}>
+                <form onSubmit={handleSubmit}>
                     <div>
-                        <label>Title</label>
-                        {/* <div>
+                        {/* <label>Title</label>
+                         <div>
                             <input type='text' value={message.title}
                                 onChange={(e) =>
                                     setMessage({
@@ -60,21 +51,16 @@ function EditMessageForm(props) {
                     <div>
                         <label>Content</label>
                         <div>
-                            <textarea value={message.content}
+                            <textarea
                                 onChange={(e) =>
-                                    setMessage({
-                                        ...message,
-                                        content: e.target.value,
-                                    })
+                                    setContent(e.target.value)
                                 }
                             ></textarea>
                         </div>
                     </div>
 
                     <div>
-                        <button type='submit'>
-                            Edit Message
-                        </button>
+                        <button type='submit'>Save Changes</button>
                     </div>
                 </form>
             </div>

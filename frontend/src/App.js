@@ -12,6 +12,7 @@ const CreateMessagePage = lazy(() => import('./pages/CreateMessage/CreateMessage
 const MessagesPage = lazy(() => import('./pages/Messages/MessagesPage'));
 const SingleMessagePage = lazy(() => import('./pages/SingleMessage/SingleMessagePage'));
 const EditMessagePage = lazy(() => import('./pages/EditMessage/EditMessagePage'));
+const DeleteMessagePage = lazy(() => import('./pages/DeleteMessage/DeleteMessagePage'));
 const ErrorPage = lazy(() => import('./pages/Error/ErrorPage'));
 
 function App(props) {
@@ -30,7 +31,8 @@ function App(props) {
                 <Route path='/messages' element={<MessagesPage />} />
                 <Route path='/message/:id' element={<SingleMessagePage />} />
                 <Route path='/createmessage' element={<CreateMessagePage />} />
-                <Route path='/editmessage' element={<EditMessagePage />} />
+                <Route path='/editmessage/:id' element={<EditMessagePage />} />
+                <Route path='/deletemessage/:id' element={<DeleteMessagePage />} />
             </>
         )
     );
