@@ -1,6 +1,6 @@
 import MessageList from '../../components/MessageList';
 import { useQuery } from 'react-query';
-import axios from "axios";
+import axios from 'axios';
 
 function MessagesPage() {
   const { data: messagesData, isLoading: isLoadingMessages } = useQuery('messages',

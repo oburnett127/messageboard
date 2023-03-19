@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom';
-import { useEffect, lazy } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { checkAutoLogin } from './services/AuthService';
 import { isAuthenticated } from './store/selectors/AuthSelectors';
@@ -28,6 +28,7 @@ function App(props) {
 
     const router = createBrowserRouter(
         createRoutesFromElements(
+            
                 <Route path='/' errorElement={<ErrorPage />} element={<RootLayout />}>
                     <Route index element={<HomePage />}></Route>
                     <Route path='/signup' element={<SignUpPage />}></Route>
@@ -42,9 +43,10 @@ function App(props) {
                         <Route path='/messages/new' element={<CreateMessagePage />}></Route>
                     </Route>
                 </Route>
+                
         )
     );
-    
+
     return (
         <div>
             <RouterProvider router={router} />
