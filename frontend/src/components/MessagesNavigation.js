@@ -6,20 +6,10 @@ function MessagesNavigation() {
       <nav>
         <ul>
           <li>
-            <NavLink
-              to="/messages"
-              end
-            >
-              All Messages
-            </NavLink>
+            <a href="/messages">All Messages</a>
           </li>
           <li>
-            <NavLink
-              to="/messages/new"
-              end
-            >
-              New Message
-            </NavLink>
+            <a href="/messages/new">New Message</a>
           </li>
         </ul>
       </nav>

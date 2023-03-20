@@ -1,4 +1,4 @@
-import EditMessageForm from '../../components/EditMessageForm';
+import EditMessageForm from '../components/EditMessageForm';
 
 function EditMessagePage() {
   return <EditMessageForm method="update" />;

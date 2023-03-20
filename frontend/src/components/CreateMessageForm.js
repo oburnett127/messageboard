@@ -10,10 +10,6 @@ function CreateMessageForm({method, message}) {
 
   const isSubmitting = navigation.state === 'submitting';
 
-  function cancelHandler() {
-    navigate('..');
-  }
-
   const [title, setTitle] = useState('');
 
   //Need to change this once login is implemented
@@ -43,6 +39,10 @@ function CreateMessageForm({method, message}) {
     e.preventDefault();
     createMessage.mutate({ author, content });
   };
+
+  function cancelHandler() {
+    navigate('..');
+  }
 
   return (
     <>

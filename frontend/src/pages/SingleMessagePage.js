@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { getMessage } from '../../store/selectors/MessageSelectors';
-import SingleMessageForm from '../../components/SingleMessageForm';
+import { getMessage } from '../store/selectors/MessageSelectors';
+import SingleMessageForm from '../components/SingleMessageForm';
 
 function SingleMessagePage() {
     return (

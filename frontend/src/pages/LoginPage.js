@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import Loader from '../../components/Loader/Loader';
+import Loader from '../components/Loader/Loader';
 import {
     loadingToggleAction,
-    signupAction,
-} from '../../store/actions/AuthActions';
+    loginAction,
+} from '../store/actions/AuthActions';
 
-function SignUpPage(props) {
+function LoginPage(props) {
     const [email, setEmail] = useState('');
     let errorsObj = { email: '', password: '' };
     const [errors, setErrors] = useState(errorsObj);
@@ -14,10 +14,11 @@ function SignUpPage(props) {
 
     const dispatch = useDispatch();
 
-    function onSignUp(e) {
+    function onLogin(e) {
         e.preventDefault();
         let error = false;
         const errorObj = { ...errorsObj };
+        
         if (email === '') {
             errorObj.email = 'Email is Required';
             error = true;
@@ -33,14 +34,14 @@ function SignUpPage(props) {
         if (error) return;
         dispatch(loadingToggleAction(true));
 
-        dispatch(signupAction(email, password, props.history));
+        dispatch(loginAction(email, password, props.history));
     }
 
     return (
-        <div className='flex justify-center my-5'>
+        <div>
             {props.showLoading && <Loader />}
-            <div className='w-1/3 shadow p-3 border border-gray-400'>
-                <h1 className='text-2xl font-extrabold'>Sign Up</h1>
+            <div>
+                <h1 className='text-yellow-500'>Login</h1>
 
                 {props.errorMessage && (
                     <div className='bg-red-300 text-red-900 border border-red-900 p-1 my-2'>
@@ -53,7 +54,7 @@ function SignUpPage(props) {
                     </div>
                 )}
 
-                <form onSubmit={onSignUp}>
+                <form onSubmit={onLogin}>
                     <div>
                         <label>Email</label>
                         <div>
@@ -86,7 +87,7 @@ function SignUpPage(props) {
                             type='submit'
                             className='bg-green-700 text-white px-3 py-1'
                         >
-                            Sign Up
+                            Login
                         </button>
                     </div>
                 </form>
@@ -102,4 +103,5 @@ const mapStateToProps = (state) => {
         showLoading: state.auth.showLoading,
     };
 };
-export default connect(mapStateToProps)(SignUpPage);
+
+export default connect(mapStateToProps)(LoginPage);

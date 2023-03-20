@@ -6,20 +6,10 @@ function MainNavigation() {
       <nav>
         <ul>
           <li>
-            <NavLink
-              to="/"
-              end
-            >
-              Home
-            </NavLink>
+            <a href="/">Home</a>
           </li>
           <li>
-            <NavLink
-              to="/messages"
-              end
-            >
-              Messages
-            </NavLink>
+            <a href="/messages">Messages</a>
           </li>
         </ul>
       </nav>

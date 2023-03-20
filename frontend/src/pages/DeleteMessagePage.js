@@ -1,4 +1,4 @@
-import DeleteMessageForm from '../../components/DeleteMessageForm';
+import DeleteMessageForm from '../components/DeleteMessageForm';
 
 function DeleteMessagePage() {
   return <DeleteMessageForm />;

@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useState } from "react";
-import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import axios from 'axios';
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
+import MakeReply from './MakeReply'
 
 function SingleMessageForm() {
   const { id } = useParams();
@@ -27,6 +27,7 @@ function SingleMessageForm() {
       <p>{messageData.author}</p>
       <time>{messageData.timestamp}</time>
       <p>{messageData.content}</p>
+      <MakeReply />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import CreateMessageForm from '../../components/CreateMessageForm';
+import CreateMessageForm from '../components/CreateMessageForm';
 
 function CreateMessagePage() {
   return <CreateMessageForm method="post" />;
