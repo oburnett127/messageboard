@@ -2,8 +2,7 @@ import './App.css';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
-import { checkAutoLogin } from './services/AuthService';
-import { isAuthenticated } from './store/selectors/AuthSelectors';
+import isAuthenticated from './AuthSelectors'
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage'));
@@ -41,7 +40,7 @@ function App(props) {
                         <Route path='/messages/new' element={<CreateMessagePage />}></Route>
                     </Route>
                 </Route>
-                
+         
         )
     );
 

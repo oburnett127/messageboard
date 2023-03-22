@@ -95,7 +95,7 @@ function SignUpPage(props) {
     );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
     return {
         errorMessage: state.auth.errorMessage,
         successMessage: state.auth.successMessage,
