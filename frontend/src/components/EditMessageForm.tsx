@@ -5,6 +5,7 @@ import { getMessage } from '../store/selectors/MessageSelectors';
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import React from 'react';
 
 function EditMessageForm(props) {
     const { id } = useParams();
@@ -22,7 +23,7 @@ function EditMessageForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        mutate({ content });
+        mutate();
         
         //const dispatch = useDispatch();
         //dispatch(updateMessageAction(message, props.history));

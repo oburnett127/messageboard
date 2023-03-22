@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import MakeReply from './MakeReply'
+import React from 'react';
 
 function SingleMessageForm() {
   const { id } = useParams();
@@ -17,7 +18,7 @@ function SingleMessageForm() {
   }
 
   if (error) {
-      return <div>Error: {error.message}</div>;
+      return <div>Error: {error['message']}</div>;
   }
 
   const messageData = result.data.message;

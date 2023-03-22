@@ -2,7 +2,8 @@ import './App.css';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom';
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
-import isAuthenticated from './AuthSelectors'
+import isAuthenticated from './AuthSelectors';
+import React from 'react';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage'));
@@ -16,7 +17,7 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage'));
 const RootLayout = lazy(() => import('./pages/RootLayout'));
 const MessageRootLayout = lazy(() => import('./pages/MessageRootLayout'));
 
-function App(props) {
+function App(props: any) {
     const dispatch = useDispatch();
     useEffect(() => {
         console.log(props);
@@ -51,7 +52,7 @@ function App(props) {
     );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
     return {
         isAuthenticated: isAuthenticated(state),
     };

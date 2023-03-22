@@ -1,10 +1,11 @@
 import { Form, useNavigate, useNavigation, useActionData } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import axios from 'axios';
-import {useState} from "react";
+import { useState } from 'react';
+import React from 'react';
 
-function CreateMessageForm({method, message}) {
-  const data = useActionData();
+function CreateMessageForm({ method }) {
+  const data: any = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
@@ -37,7 +38,7 @@ function CreateMessageForm({method, message}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createMessage.mutate({ author, content });
+    createMessage.mutate();
   };
 
   function cancelHandler() {
@@ -52,7 +53,7 @@ function CreateMessageForm({method, message}) {
         <Form method={method} onSubmit={handleSubmit}>
           {data && data.errors && (
             <ul>
-              {Object.values(data.errors).map((err) => (
+              {Object.values(data.errors).map((err: any) => (
                 <li key={err}>{err}</li>
               ))}
             </ul>
@@ -63,7 +64,6 @@ function CreateMessageForm({method, message}) {
               id="title"
               type="text"
               name="title"
-              defaultValue={message ? message.title : ''}
               onChange={(e) => setTitle(e.target.value)}
             />
           </p>
@@ -72,9 +72,8 @@ function CreateMessageForm({method, message}) {
             <textarea
               id="content"
               name="content"
-              rows="5"
+              rows={5}
               required
-              defaultValue={message ? message.content : ''}
               onChange={(e) => setContent(e.target.value)}
             />
           </p>

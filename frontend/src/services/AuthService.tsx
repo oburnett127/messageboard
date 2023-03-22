@@ -3,6 +3,7 @@ import {
     loginConfirmedAction,
     logout,
 } from '../store/actions/AuthActions';
+import React from 'react';
 
 export function signUp(email, password) {
     //axios call
@@ -71,7 +72,7 @@ export function checkAutoLogin(dispatch, history) {
     }
 
     tokenDetails = JSON.parse(tokenDetailsString);
-    let expireDate = new Date(tokenDetails.expireDate);
+    let expireDate = new Date(tokenDetails['expireDate']);
     let todaysDate = new Date();
 
     if (todaysDate > expireDate) {

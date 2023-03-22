@@ -1,15 +1,16 @@
 import { NavLink } from 'react-router-dom';
+import React from 'react';
 
-function MessagesNavigation() {
+function MainNavigation() {
   return (
     <header>
       <nav>
         <ul>
           <li>
-            <a href="/messages">All Messages</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="/messages/new">New Message</a>
+            <a href="/messages">Messages</a>
           </li>
         </ul>
       </nav>
@@ -17,4 +18,4 @@ function MessagesNavigation() {
   );
 }
 
-export default MessagesNavigation;
+export default MainNavigation;

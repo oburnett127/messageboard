@@ -1,4 +1,5 @@
 import { useRouteError } from 'react-router-dom';
+import React from 'react';
 
 function ErrorPage() {
   const error = useRouteError();
@@ -8,7 +9,7 @@ function ErrorPage() {
   let message;
 
   if(error) {
-    message = error.data.message ? error.data.message : "Something went wrong";
+    message = error['data'].message ? error['data'].message : "Something went wrong";
   } else {
     message = "Something went wrong"
   }

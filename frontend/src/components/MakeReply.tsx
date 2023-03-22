@@ -1,3 +1,5 @@
+import React from 'react';
+
 function MakeReply() {
     const handleSubmit = (e) => {
         e.preventDefault();
